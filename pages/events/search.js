@@ -3,7 +3,7 @@ import EventItem from '@/components/EventItem'
 import Layout from '@/components/Layout'
 import { API_URL } from '@/config/index'
 
-export default function EventsPage({ events }) {
+export default function SearchPage({ events }) {
 
   return (
     <Layout>
@@ -18,7 +18,7 @@ export default function EventsPage({ events }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({querey:{term}}) {
   // const res= await fetch(`${API_URL}/api/events`)
   const res = await fetch(`${API_URL}/events?_sort=date:ASC`)
   const events = await res.json()
